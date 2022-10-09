@@ -146,8 +146,8 @@ class QudsPopupMenuSection extends QudsPopupMenuBase {
   /// The background color of this section
   final Color? backgroundColor;
 
-  /// The title text of the section
-  final String titleText;
+  /// The title of the section
+  final Widget title;
 
   /// The sub title widget of the item
   final Widget? subTitle;
@@ -160,7 +160,7 @@ class QudsPopupMenuSection extends QudsPopupMenuBase {
 
   /// Creates an instance of [QudsPopupMenuSection]
   QudsPopupMenuSection({
-    required this.titleText,
+    required this.title,
     required this.subItems,
     this.subTitle,
     this.leading,
@@ -245,29 +245,6 @@ class _QudsPopupMenuState extends State<_QudsPopupMenu> {
                     child: Column(
                       mainAxisSize: MainAxisSize.min,
                       children: [
-                        if (sections.isNotEmpty)
-                          Row(
-                            children: [
-                              IconButton(
-                                  tooltip: MaterialLocalizations.of(context)
-                                      .backButtonTooltip,
-                                  onPressed: _back,
-                                  icon: Icon(
-                                    Icons.arrow_back_ios_rounded,
-                                    color: Theme.of(context).iconTheme.color,
-                                  )),
-                              const SizedBox(
-                                width: 10,
-                              ),
-                              Text(
-                                sections.last.titleText,
-                                style: Theme.of(context)
-                                    .textTheme
-                                    .headline5!
-                                    .copyWith(fontWeight: FontWeight.bold),
-                              )
-                            ],
-                          ),
                         for (var i in currentItems) _buildItem(i)
                       ],
                     ),
@@ -321,7 +298,7 @@ class _QudsPopupMenuState extends State<_QudsPopupMenu> {
         }),
         leading: item.leading,
         subtitle: item.subTitle,
-        title: Text(item.titleText),
+        title: item.title,
       );
     }
 
