@@ -322,7 +322,6 @@ class _QudsPopupMenuState extends State<_QudsPopupMenu> {
         leading: item.leading,
         subtitle: item.subTitle,
         title: Text(item.titleText),
-        trailing: const Icon(Icons.arrow_forward_ios),
       );
     }
 
